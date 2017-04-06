@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/Template.xhtml">
+
+	<h:head>
+		<f:facet name="first">
+			<title>PrimeFaces</title>
+			<h:outputStylesheet library="css" name="jsfcrud.css" />
+		</f:facet>
+	</h:head>
+	<ui:define name="body">
+		<h1 class="notFound">Page not found</h1>
+		<p:link href="Index.xhtml"><p style="font-size=30px;">Go to Login</p></p:link>
+	</ui:define>
+</ui:composition>
+</html>

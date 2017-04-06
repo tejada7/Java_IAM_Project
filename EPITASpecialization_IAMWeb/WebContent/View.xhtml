@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<f:event listener="#{pageController.verifyUser}" type="preRenderView"></f:event>
+</h:head>
+<ui:composition>
+	<p:dialog id="IdentityViewDlg" widgetVar="IdentityViewDialog"
+		modal="true" resizable="false" appendTo="@(body)" header="Identity">
+		<h:form id="IdentityViewForm">
+			<p:accordionPanel multiple="true" rendered="#{identityController.selected != null}">
+				<p:tab title="Main attributes" >
+					<p:panelGrid columns="2"
+						rendered="#{identityController.selected != null}"
+						style="width: 100%">
+						<h:outputText value="Id" />
+						<h:outputText value="#{identityController.selected.uid}"
+							title="Id" />
+						<h:outputText value="Name" />
+						<h:outputText value="#{identityController.selected.displayName}"
+							title="Name" />
+						<h:outputText value="Email" />
+						<h:outputText value="#{identityController.selected.email}"
+							title="Email" />
+						<h:outputText value="Birthdate" />
+						<h:outputText value="#{identityController.selected.birthDate}"
+							title="Birthdate" />
+					</p:panelGrid>
+				</p:tab>
+				<p:tab title="Other attributes"
+					disabled="#{empty identityController.selected.attributesList}">
+					<p:panelGrid columns="1" style="width: 100%">
+						<p:dataTable value="#{identityController.selected.attributesList}"
+							var="attributeEntry" style="width:350px;">
+							<p:column>
+								<h:outputText value="#{attributeEntry.key}" />
+							</p:column>
+							<p:column>
+								<h:outputText value="#{attributeEntry.value}" />
+							</p:column>
+						</p:dataTable>
+					</p:panelGrid>
+				</p:tab>
+			</p:accordionPanel>
+			<p:commandButton value="Close" onclick="PF('IdentityViewDialog').hide()" />
+		</h:form>
+	</p:dialog>
+</ui:composition>
+</html>

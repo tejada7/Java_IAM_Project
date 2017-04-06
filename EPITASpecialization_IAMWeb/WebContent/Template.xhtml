@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+<h:head>
+	<title><ui:insert name="title">IAM WEB APPLICATION</ui:insert></title>
+	<h:outputStylesheet library="css" name="jsfcrud.css" />
+	<h:outputScript library="js" name="jsf.js" />	
+</h:head>
+
+<h:body>
+
+	<p:layout fullPage="true">
+<!-- 	HEADER -->
+		<p:layoutUnit position="north" size="120" resizable="true" closable="true" collapsible="true" styleClass="header-panel">
+			<p:graphicImage value="resources/img/Person.png" height="100" styleClass="absolute"/>
+			<p class="title">IDENTITY ACCESS MANAGEMENT</p>
+			<ui:insert name="header" />			
+		</p:layoutUnit>
+
+<!-- FOOTER -->
+		<p:layoutUnit position="south" size="300" collapsible="true" closable="true" resizable="true" styleClass="footer-panel">            	           
+            <p:panelGrid columns="5" style="width: 100%">            	
+					<p:graphicImage value="resources/img/Java.png"/>
+					<p:graphicImage value="resources/img/hibernate.png"/>
+					<p:graphicImage value="resources/img/prime.png"/>
+					<p:graphicImage value="resources/img/spring.png"/>
+					<p:graphicImage value="resources/img/maven.png"/>			
+            </p:panelGrid>	
+           	<p>Favio Tejada - EPITA 2016</p> 
+		</p:layoutUnit>
+<!-- WEST -->
+		<p:layoutUnit position="west" size="700" header="Resources"
+			collapsible="true" resizable="true" collapsed="true">			
+			<pe:documentViewer height="500" library="doc" name="userguide.pdf"/>
+		</p:layoutUnit>
+<!-- CENTER -->
+		<p:layoutUnit position="center" styleClass="layoutCenter">
+			<ui:insert name="body" />
+		</p:layoutUnit>
+
+	</p:layout>
+
+</h:body>
+
+</html>

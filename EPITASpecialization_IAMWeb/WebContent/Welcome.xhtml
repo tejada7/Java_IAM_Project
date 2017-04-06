@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+<f:view contentType="text/html">
+	<h:head>
+		<f:facet name="first">
+			<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" ></meta>
+			<title>PrimeFaces</title>
+			<h:outputScript library="js" name="jsf.js" />
+			<h:outputStylesheet library="css" name="jsfcrud.css" />
+		</f:facet>
+		<f:event listener="#{pageController.verifyUser}" type="preRenderView"></f:event>
+	</h:head>
+
+	<h:body>
+
+		<p:layout fullPage="true">
+
+			<p:layoutUnit position="north" size="120" resizable="true"
+				closable="true" collapsible="true" styleClass="header-panel">
+                    <p class="title">WELCOME TO IAM WEB</p>
+					<p:commandButton actionListener="#{userLoginView.logout}"
+					value="Logout" action="/Index?faces-redirect=true"
+					icon="ui-icon-power" styleClass="logOutButton" style="float:right;"/>
+			</p:layoutUnit>
+		<p:layoutUnit position="south" size="300" collapsible="true" closable="true" resizable="true" styleClass="footer-panel">    
+		<p:panelGrid columns="6" style="width: 100%">            	
+					<p:graphicImage value="resources/img/Java.png"/>
+					<p:graphicImage value="resources/img/hibernate.png"/>
+					<p:graphicImage value="resources/img/prime.png"/>
+					<p:graphicImage value="resources/img/spring.png"/>
+					<p:graphicImage value="resources/img/maven.png"/>					
+            	</p:panelGrid>        	            
+            	<p>Favio Tejada - EPITA 2016</p> 
+		</p:layoutUnit>
+			<p:layoutUnit position="west" size="700" header="Resources"
+			collapsible="true" resizable="true" collapsed="true">				
+			<pe:documentViewer height="500" library="doc" name="userguide.pdf"/>
+			</p:layoutUnit>			
+			<p:layoutUnit position="center">
+				<p:growl id="growl" life="3000"/>
+				<h:form id="IdentityListForm">
+					<p:dataTable id="datalist" var="identity"
+						value="#{identityController.identities}" selectionMode="single"
+						selection="#{identityController.selected}" paginator="true"
+						paginatorPosition="bottom" rowKey="#{identity.uid}" rows="10"
+						rowsPerPageTemplate="10,20,30,40,50" widgetVar="identitiesTable"
+						emptyMessage="No identities found with given criteria"
+						filteredValue="#{identityController.filteredIdentities}"
+						reflow="true">
+						<p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+						<f:facet name="header">
+							<p:outputPanel >
+								<h:outputText value="Search all fields:" />
+								<p:inputText id="globalFilter"
+									onkeyup="PF('identitiesTable').filter()" style="width:170px"
+									placeholder="Enter keyword" />
+								<p:commandButton id="toggler" type="button" value="Columns" styleClass="columnsToogler" icon="ui-icon-calculator" />
+        						<p:columnToggler datasource="datalist" trigger="toggler" />
+							</p:outputPanel>													
+						</f:facet>
+						<p:column filterBy="#{identity.uid}" headerText="Id"
+							sortBy="#{identity.uid}">
+							<h:outputText value="#{identity.uid}" />
+						</p:column>
+						<p:column filterBy="#{identity.displayName}" headerText="First Name"
+							sortBy="#{identity.displayName}">
+							<h:outputText value="#{identity.displayName}" />
+						</p:column>
+						<p:column filterBy="#{identity.lastName}" headerText="Last Name"
+							sortBy="#{identity.lastName}" >
+							<h:outputText value="#{identity.lastName}" />
+						</p:column>
+						<p:column filterBy="#{identity.email}" headerText="Email"
+							sortBy="#{identity.email}" filterMatchMode="contains">
+							<h:outputText value="#{identity.email}" />
+						</p:column>
+						<p:column filterBy="#{identity.birthDate}" headerText="Birth Date"
+							sortBy="#{identity.birthDate}" >										
+							<h:outputText value="#{identity.birthDate}" />								
+						</p:column>
+						
+						<p:column id="extra-attributes" headerText="Other attributes" exportable="false">													
+							<p:rowToggler />
+						</p:column>
+							<p:rowExpansion>
+								<p:dataTable value="#{identity.attributesList}"
+									var="attributeEntry">
+									<p:column>
+										<h:outputText value="#{attributeEntry.key}" />
+									</p:column>
+									<p:column>
+										<h:outputText value="#{attributeEntry.value}" />
+									</p:column>
+								</p:dataTable>
+							</p:rowExpansion>
+						<p:separator />
+						<f:facet name="footer">
+							<p:commandButton id="createButton" icon="ui-icon-plus"
+								value="Create"
+								actionListener="#{identityController.prepareCreate}"
+								update=":IdentityCreateForm"
+								oncomplete="PF('IdentityCreateDialog').show()" />
+							<p:commandButton id="viewButton" icon="ui-icon-search"
+								value="View"
+								update=":IdentityViewForm" 
+								oncomplete="PF('IdentityViewDialog').show()"
+								disabled="${empty identityController.selected}"/>
+							<p:commandButton id="editButton" icon="ui-icon-pencil"
+								value="Edit"
+								update=":IdentityEditForm"
+								oncomplete="PF('IdentityEditDialog').show()"
+								 disabled="${empty identityController.selected}"/>
+							<p:commandButton id="deleteButton" icon="ui-icon-trash"
+								value="Delete" actionListener="#{identityController.delete}"
+								update="datalist,:growl" disabled="${empty identityController.selected}" 
+								oncomplete="PF('identitiesTable').clearFilters();"/>
+						</f:facet>
+					</p:dataTable>
+
+	<h:commandLink>	
+		<p:graphicImage value="resources/img/xls.png" />
+        <p:dataExporter type="xls" target="datalist" fileName="identities" pageOnly="true"/>
+    </h:commandLink>
+ 
+    <h:commandLink>
+        <p:graphicImage value="resources/img/pdf.png" />
+        <p:dataExporter type="pdf" target="datalist" fileName="identities" pageOnly="true" />
+    </h:commandLink>
+
+ 
+    <h:commandLink>
+        <p:graphicImage value="resources/img/xml.png" />
+        <p:dataExporter type="xml" target="datalist" fileName="identities" pageOnly="true" />
+    </h:commandLink>
+    
+				</h:form>
+				<ui:include src="Create.xhtml" />
+				<ui:include src="View.xhtml" />
+				<ui:include src="Edit.xhtml"/>
+				
+				
+			</p:layoutUnit>
+		</p:layout>
+	</h:body>
+</f:view>
+</html>

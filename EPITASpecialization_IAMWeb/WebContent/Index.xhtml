@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/Template.xhtml">
+
+	<ui:define name="body">		
+			<h:form>
+				<p:growl id="growl" life="3000" showDetail="false" />
+				<h:panelGrid columns="3" cellpadding="5" styleClass="panelGridCenter">
+					<h:outputLabel for="username" value="User Name:" />
+					<p:inputText id="username" value="#{userLoginView.displayName}"
+						required="true" label="username" requiredMessage="User name empty" styleClass="inputText"/>
+					<p:tooltip id="toolTipUserName" for="username"
+						value="Enter user name" showEffect="clip" hideEffect="explode" />
+
+					<h:outputLabel for="password" value="Password:" />
+					<p:password id="password" value="#{userLoginView.password}"
+						required="true" label="password" requiredMessage="Password empty" styleClass="inputText"/>
+					<p:tooltip id="toolTipPassword" for="password"
+						value="Enter password" showEffect="clip" hideEffect="explode" />
+					<f:facet name="footer">
+						<p:commandButton icon="ui-icon-key" value="login" update="growl"
+							action="#{userLoginView.login}" />
+					</f:facet>
+				</h:panelGrid>		
+			</h:form>		
+	</ui:define>
+</ui:composition>
+</html>
