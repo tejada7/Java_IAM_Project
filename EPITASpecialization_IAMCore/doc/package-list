@@ -1,0 +1,10 @@
+com.ftm.iamcore.datamodel
+com.ftm.iamcore.exceptions
+com.ftm.iamcore.services.dao
+com.ftm.iamcore.services.dao.impl
+com.ftm.iamcore.utils
+com.ftm.specialization.iamcore.tests.app
+com.ftm.specialization.iamcore.tests.hibernate
+com.ftm.specialization.iamcore.tests.log4j
+com.ftm.specialization.iamcore.tests.spring
+com.ftm.specialization.iamcore.tests.utils
