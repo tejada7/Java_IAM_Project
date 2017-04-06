@@ -1,0 +1,127 @@
+@CHARSET "ISO-8859-1";
+@import url(https://fonts.googleapis.com/css?family=Tinos);
+@import url(https://fonts.googleapis.com/css?family=Orbitron);
+.ui-widget {
+	font-size: 25px !important;
+}
+
+.ui-layout-north {
+	z-index: 25 !important;
+	overflow: visible !important;
+}
+
+.ui-layout-north .ui-layout-unit-content {
+	overflow: visible !important;
+}
+
+.ui-widget-header {
+	text-align: center;
+	/*     text-transform: uppercase; */
+}
+
+.ui-button {
+	margin-top: 10px !important;
+}
+
+.ui-widget-content {
+	background-color: #BDBDBD;
+	background: #BDBDBD;
+	border: 1px solid black;
+}
+
+.header-panel .ui-widget-content {
+	/* 	background: white; */
+	background-color: #35414F;
+}
+
+.footer-panel .ui-widget-content {
+	/* 	background: white; */
+	background-color: #35414F;
+	border: 1px solid rgba(255, 255, 255, 0);
+}
+
+.layoutCenter .ui-layout-unit-header {
+	
+}
+
+.layoutCenter .ui-layout-unit-content {
+	/* 	background-image: url('http://www.primefaces.org/images/logo.png'); */
+	/* 	background-image: url('http://www.primefaces.org/images/pfhead.png'); */
+	background-image: url('http://s32.postimg.org/cwi2rympx/head.png');
+	-webkit-background-size: contain;
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.panelGridCenter {
+	margin: 0 auto;
+	margin-top: 200px;
+}
+
+p {
+	text-align: center;
+	font-family: monospace;
+	color: white;
+}
+
+
+.title {
+	text-align: center;
+	font-family: Orbitron,Tinos, sans-serif;
+	font-size: 50px;
+	margin-top: 0.5em;
+	margin-bottom: -1em;
+	color: #E1E463;
+}
+
+.logOutButton {	
+	margin: 0 auto;
+}
+
+.notFound {
+	font-size: 7em;
+	text-align: center;
+	margin-top: 200px;
+}
+
+.absolute {
+	position: fixed;
+	margin-left: 20%;
+	display: none;
+}
+
+.ui-datatable tbody td {
+	border-color: black !important;
+}
+
+.columnsToogler {
+	position: relative;	
+	margin-left: 50%;
+}
+
+@media only screen and (max-width: 960px) {
+	.title {
+		font-size: 40px;
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	.absolute {
+		display: inline;
+	}	
+}
+
+@media only screen and (max-width: 500px) {
+	.title {
+		font-size: 25px;
+	}
+	.columnsToogler {
+		display: inline;
+	}
+	.inputText {
+		width: 150px;
+	}	
+}
