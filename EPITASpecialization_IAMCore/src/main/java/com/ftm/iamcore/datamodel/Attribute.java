@@ -9,7 +9,7 @@ import java.io.Serializable;
  * The {@code Attribute} class defines the structure of the 
  * Map&lt;String, String&gt; attributes field,
  * defined in {@link Identity.java} 
- * @author Favio
+ * @author Favio4
  *
  */
 public class Attribute implements Serializable{

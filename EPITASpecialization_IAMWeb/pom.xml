@@ -28,6 +28,10 @@
 			<url>http://repository.primefaces.org</url>
 			<layout>default</layout>
 		</repository>
+        <repository>
+            <id>redshift</id>
+            <url>http://redshift-maven-repository.s3-website-us-east-1.amazonaws.com/release</url>
+        </repository>
 	</repositories>
 
 	<dependencies>
@@ -109,8 +113,13 @@
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
-		<version>3.10-FINAL</version>
-</dependency>
+			<version>3.10-FINAL</version>
+		</dependency>
+		<dependency>
+			<groupId>com.amazon.redshift</groupId>
+			<artifactId>redshift-jdbc42</artifactId>
+			<version>1.2.10.1009</version>
+		</dependency>
 <dependency><groupId>com.lowagie</groupId>
 <artifactId>itext</artifactId>
 <version>1.4.8</version></dependency>
