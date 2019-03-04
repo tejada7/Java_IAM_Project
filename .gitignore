@@ -1,0 +1,11 @@
+.idea/*
+/EPITASpecialization_IAMGroup/.project
+/EPITASpecialization_IAMGroup/.settings
+/EPITASpecialization_IAMCore/target/*
+/EPITASpecialization_IAMWeb/target/*
+*.impl
+*.ipr
+*.iws
+*.iml
+*.project
+*.settings
