@@ -1,3 +1,4 @@
+[![BCH compliance](https://bettercodehub.com/edge/badge/tejada7/Java_IAM_Project?branch=master)](https://bettercodehub.com/)
 ![](https://github.com/tejada7/Java_IAM_Project/blob/5e41cb3e4a967a8536c897431b23a24f0049fac0/EPITASpecialization_IAMWeb/WebContent/resources/doc/epita.png?raw=true)
 # Identity Access Management Web Application      
 # User Guide
